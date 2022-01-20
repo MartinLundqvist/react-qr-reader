@@ -11,14 +11,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(102, 102, 140);
+  color: white;
 }
 
 .container {
   display: grid;
-  grid-template-columns: 500px;
+  grid-template-columns: 300px;
+  grid-template-rows: auto auto auto 300px;
   place-content: center;
   gap: 1rem;
-  color: white;
 }
 
 button {
@@ -28,15 +29,21 @@ button {
   border: none;
   outline: none;
   font: inherit;
-  background-color: hsla(300, 17%, 73%, 0.8);
-  color: black;
+  color: inherit;
+  background-color: hsla(300, 6%, 30%, 0.8);
   box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.5);
 }
 
 button:hover {
-  background-color: hsla(300, 17%, 73%, 1);
+  background-color: hsla(300, 6%, 30%, 1);
 }
 
 button:active {
   box-shadow: none;
+}
+
+.results__container {
+  background-color: hsla(300, 6%, 30%, 0.8);
+  padding: 0.25rem;
+  box-shadow: 1px 1px 3px hsla(0, 0%, 0%, 0.5);
 }
