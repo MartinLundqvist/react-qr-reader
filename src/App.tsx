@@ -1,45 +1,30 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { useState } from 'react';
+import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [data, setData] = useState('Söker...');
+  const [scanning, setScanning] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className='container'>
+      {!scanning && <button onClick={() => setScanning(true)}>Scanna</button>}
+      {scanning && (
+        <>
+          <button onClick={() => setScanning(false)}>Stäng scanner</button>
+
+          <BarcodeScannerComponent
+            width={500}
+            height={500}
+            onUpdate={(err, result) =>
+              result ? setData(result.getText()) : setData('Söker...')
+            }
+          />
+
+          <h3>Scannar och hittar</h3>
+          <p>{data}</p>
+        </>
+      )}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
